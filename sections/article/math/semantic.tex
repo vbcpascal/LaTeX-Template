@@ -1,0 +1,30 @@
+\subsection{Semantic}
+
+Inference rules are easily set using semantic package:
+
+\[
+  \inference[(Modus Ponens)]{%
+    p -> q & p
+  }{%
+    q
+  }
+\]
+
+We can use new ligatures for use in the math environments.
+And using reserved words like $\<where>$ in math environments have been more convenient.
+
+\[
+  \inference[(T-If)]{%
+    Γ |- e_1 : \<Bool> &
+    Γ |- e_2 : T &
+    Γ |- e_3 : T &
+  }{%
+    Γ |- \<if> e_1 \<then> e_2 \<else> e_3 : T
+  }
+\]
+
+\[
+  \inference[(E-App)]
+  { |[ e_1 |] = f & |[ e_2 |] = x }
+  { |[ e_1~e_2 |] = f(x) }
+\]

@@ -1,0 +1,47 @@
+\usepackage[inference,ligature,reserved,shorthand]{semantic}
+
+%% ===============[ Reserved ]=============== %%
+
+% Set the style of reserved words
+\reservestyle[\mathinner]{\command}{\mathbf}
+
+\newcommand{\LcmdItem}[1]{\command{#1[#1\;]}}
+\newcommand{\McmdItem}[1]{\command{#1[\;#1\;]}}
+\newcommand{\RcmdItem}[1]{\command{#1[\;#1]}}
+
+\newcommand{\lcmd}{\forcsvlist{\LcmdItem}}
+\newcommand{\mcmd}{\forcsvlist{\McmdItem}}
+\newcommand{\rcmd}{\forcsvlist{\RcmdItem}}
+
+\ifoptioncontains{/TeXonf/semantic/reserved}{stlc}{%
+  \lcmd{if} \mcmd{then, else}
+  \lcmd{let, letrec, fix} \lcmd{in}
+  \command{Bool, Nat, List}
+  \command{True, False}
+}{}
+
+\ifoptioncontains{/TeXonf/semantic/reserved}{imp}{%
+  \lcmd{if} \mcmd{then, else}
+  \lcmd{while, repeat, until} \mcmd{do} \command{end}
+  \command{skip} \lcmd{assert}
+  \command{true, false}
+}{}
+
+\ifoptioncontains{/TeXonf/semantic/reserved}{haskell}{%
+  \lcmd{if} \mcmd{then, else}
+  \lcmd{let, case} \lcmd{in} \rcmd{of}
+  \command{do, where, default}
+  \lcmd{data, newtype, type, class, deriving, instance}
+  \lcmd{import, module, foreign}
+  \mcmd{hiding, as} \mcmd{qualified}
+  \lcmd{infix, infixl, infixr}
+  \lcmd{forall}
+}{}
+
+\ifoptioncontains{/TeXonf/semantic/reserved}{user}{%
+  \command{Bool}
+}{}
+
+%% ===============[ Math Ligatures ]=============== %%
+
+\mathlig{||-}{\Vdash}

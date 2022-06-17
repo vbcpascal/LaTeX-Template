@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+  \matrix (left) [
+    matrix of math nodes,
+    ampersand replacement=\&,
+    row sep = 4em, column sep = 6em
+  ] {
+    \mathstrut α \& \mathstrut β   \\
+    \mathstrut α' \& \mathstrut β' \\
+  };
+  \draw[->] (left-1-1) to node[above]{$get$} (left-1-2);
+  \draw[->, rounded corners = 1.5em]
+  (left-1-1) -- (left-2-2.center) -- (left-2-1);
+  \path (left-2-2) to node[below]{$put$} (left-2-1);
+\end{tikzpicture}

@@ -1,0 +1,23 @@
+\usepackage{options}
+
+\options{
+  /TeXonf/.new family,
+  /TeXonf/class/.new choice = {article, beamer},
+  /TeXonf/lang/.new choice = {chinese, english},
+  /TeXonf/bib/.new choice = {true, false},
+  /TeXonf/bib/style/.new value = plain,
+  /TeXonf/bib/file/.new value = refs,
+  /TeXonf/beamer/theme/.new value = themes/empty,
+  /TeXonf/semantic/reserved/.new list = {user},
+}
+
+\makeatletter
+\@ifclassloaded{beamer}{
+  \options{/TeXonf/class = beamer}
+}{}
+\makeatother
+
+\ifcase\option{/TeXonf/class/@ord} % article
+  \newcommand{\institute}[1]{}
+  \newcommand{\alert}[1]{} % [TODO]
+\fi

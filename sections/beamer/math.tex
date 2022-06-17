@@ -1,0 +1,67 @@
+\section{math}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand{\lens}[2]{#1 \rsa #2}
+
+\begin{frame}{System K}
+
+  \begin{theorem}[Theorem 8.6]
+    Let $φ$ be a formula in system K and $φ'$ be the formula obtained by
+    replacing all of $□$ and $◇$ in $φ$ by $□^k$ and $◇^k$.
+    If $⊦_K φ$, then $⊦_K φ'$.
+  \end{theorem}
+
+  \begin{proof}
+    By induction on the length of proofs,
+    \begin{itemize}
+      \item If $φ$ is an axiom, $φ'$ is a theorem
+      \item $⊦_K ◇^k ψ \leftrightarrow ¬□^k¬ ψ$
+      \item $⊦_K □^k(ψ\to r) \to (□^k ψ \to □^k r)$
+      \item $⊦_K φ$ implies $⊦_K □^k φ$
+    \end{itemize}
+  \end{proof}
+
+\end{frame}
+
+\begin{frame}{Lens}
+  A lens is a pair of transformations: forward $get$ and backward $put$.
+
+  \[
+    \<data>~\lens{α}{β} = Lens~\{ get :: α \to β, put :: α \to β \to α \}
+  \]
+
+  \begin{center}
+    \input{sections/tikz/lens}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Lens, Cont'd}
+
+  Well-behavedness laws:
+  \begin{align*}
+    (\text{GetPut}) \quad & put~a~(get~a) = a \\
+    (\text{PutGet}) \quad & get~(put~a~b) = b
+  \end{align*}
+
+  \begin{center}
+    \input{sections/tikz/laws}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Lens, Cont'd}
+
+  Composition of lenses
+  \begin{align*}
+     & (;) :: (\lens{α}{β}) \to (\lens{β}{γ}) \to (\lens{α}{γ})          \\
+     & l_1 ; l_2 = Lens~(l_2.get \cdot l_1.get)                          \\
+     & \hspace{60pt} (\lambda a~c \to l_1.put~a~(l_2.put~(l_1.get~a)~c))
+  \end{align*}
+  preserves well-behavedness.
+
+  \begin{center}
+    \input{sections/tikz/composition}
+  \end{center}
+
+\end{frame}

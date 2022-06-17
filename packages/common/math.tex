@@ -1,0 +1,36 @@
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% Physics quantities and symbols
+% \usepackage{physics} % Conflict with semantic
+\usepackage{siunitx}
+
+\ifcase\option{/TeXonf/class/@ord}
+  { % article
+    \ifcase\option{/TeXonf/lang/@ord}
+      % chinese
+      \newtheorem{theorem}{定理}[section]
+      \newtheorem{lemma}[theorem]{引理}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}{定义}[section]
+
+      \theoremstyle{remark}
+      \newtheorem*{remark}{备注}
+    \or
+      % english
+      \newtheorem{theorem}{Theorem}[section]
+      \newtheorem{lemma}[theorem]{Lemma}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}{Definition}[section]
+
+      \theoremstyle{remark}
+      \newtheorem*{remark}{Remark}
+    \fi
+  }
+\fi

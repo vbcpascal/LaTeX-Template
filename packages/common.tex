@@ -1,0 +1,65 @@
+% Package CTex
+\ifcase\option{/TeXonf/lang/@ord}
+  \usepackage{ctex} % chinese
+\fi
+
+%% layouts
+\usepackage{geometry}         % page dimensions
+\usepackage{indentfirst}      % indent in each paragraph
+\usepackage{setspace}         % line spacing
+\usepackage{hyperref}         % cross-reference
+\usepackage{etoolbox}         % primitives
+\usepackage{enumerate}
+
+%% Tables
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+
+%% Figure
+\usepackage{graphicx}         % insert image
+\usepackage{subcaption}
+
+%% Math
+\input{packages/common/math}
+
+%% Color
+\input{packages/common/xcolor}
+
+%% ===============[ Settings ]=============== %%
+
+% tex - paragraph indent
+% default: article 2em; else 0em
+\ifcase\option{/TeXonf/class/@ord} % article
+  \setlength{\parindent}{2em}
+\fi
+% \setlength{\parindent}{2em}
+
+
+% tex - captions
+\ifcase\option{/TeXonf/lang/@ord} % chinese
+  \renewcommand{\contentsname}{目录}
+  \renewcommand{\abstractname}{摘要}
+  \renewcommand{\figurename}{图}
+\fi
+
+
+% geometry - Margins
+% default: No adjustment in beamer, narrower than normal page in article.
+\makeatletter\@ifclassloaded{beamer}{}{%
+  \geometry{left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm}
+}\makeatother
+
+
+% graphicx - path
+% default: images
+\graphicspath{ {./images/} }
+
+% hyperref - colors
+% default: 
+% \hypersetup{
+%   colorlinks=true,
+%   linkcolor=blue,
+%   filecolor=magenta,
+%   urlcolor=cyan,
+% }

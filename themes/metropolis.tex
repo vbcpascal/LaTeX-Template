@@ -1,0 +1,24 @@
+\usetheme[progressbar=foot]{metropolis}
+
+\definecolor{Black}{HTML}{222831}
+\definecolor{White}{HTML}{F2F2F2}
+\definecolor{Blue}{HTML}{3A96EE}
+\setbeamercolor{normal text}{fg=Black,bg=White}
+\setbeamercolor{alerted text}{fg=Blue}
+\makeatletter
+\setlength{\metropolis@progressinheadfoot@linewidth}{1.5pt}
+\setlength{\metropolis@titleseparator@linewidth}{0.5pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{0.8pt}
+\makeatother
+
+\usefonttheme[onlymath]{serif}
+
+\setmonofont{JetBrains Mono}[Contextuals=Alternate]
+\newfontfamily\SourceHanSerif{Source Han Serif SC}
+% \newcommand*{\chinese}[1]{{\SourceHanSerif#1}}
+
+\usepackage{lipsum}
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+
+\metroset{block=fill}

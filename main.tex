@@ -1,0 +1,26 @@
+\documentclass[a4paper,12pt]{article}
+% \documentclass[aspectratio=169]{beamer}
+
+\input{packages}
+
+\ifcase\option{/TeXonf/class/@ord}
+  % article
+\or
+  % beamer
+  \input{\option{/TeXonf/beamer/theme}}
+\fi
+
+\input{commands}
+
+\begin{document}
+
+\maketitle
+
+\input{content}
+
+\ifcase\option{/TeXonf/bib/@ord}
+\bibliographystyle{\option{/TeXonf/bib/style}}
+\bibliography{\option{/TeXonf/bib/file}}
+\fi
+
+\end{document}
